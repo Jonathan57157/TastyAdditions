@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "food_mod_2:block/burger_block" }
+  }
+}

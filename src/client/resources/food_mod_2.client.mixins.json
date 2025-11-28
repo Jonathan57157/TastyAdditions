@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "de.jonathan57157.food_mod_2.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ExampleClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

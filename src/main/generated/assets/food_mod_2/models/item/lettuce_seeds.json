@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "food_mod_2:item/lettuce_seeds"
+  }
+}

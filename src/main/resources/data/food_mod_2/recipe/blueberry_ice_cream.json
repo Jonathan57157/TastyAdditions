@@ -1,0 +1,10 @@
+{
+  "type": "food_mod_2:ice_cream_maker",
+  "ingredient": {
+    "item": "food_mod_2:blueberries"
+  },
+  "result": {
+    "id": "food_mod_2:scoop_of_blueberry_ice_cream",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "itemgroup.food_mod_2.food_mod_items": "Food Mod",
+
+  "item.food_mod_2.ice_cream_cone": "Ice Cream Cone",
+  "item.food_mod_2.ice_cream_wafer": "Ice Cream Wafer",
+  "item.food_mod_2.scoop_of_strawberry_ice_cream": "Scoop of Strawberry Ice Cream",
+  "item.food_mod_2.scoop_of_blueberry_ice_cream": "Scoop of Blueberry Ice Cream",
+  "item.food_mod_2.scoop_of_apple_ice_cream": "Scoop of Apple Ice Cream",
+  "item.food_mod_2.burger": "Burger",
+  "item.food_mod_2.lettuce_seeds": "Lettuce Seeds",
+  "item.food_mod_2.lettuce": "Lettuce",
+  "item.food_mod_2.cheese": "Cheese",
+  "item.food_mod_2.pumpkin_soup": "Pumpkin Soup",
+  "item.food_mod_2.tomato": "Tomato",
+  "item.food_mod_2.tomato_seeds": "Tomato Seeds",
+  "item.food_mod_2.blueberries": "Blueberries",
+  "item.food_mod_2.blueberry_seeds": "Blueberry Seeds",
+
+  "block.food_mod_2.lettuce_crop": "Lettuce Crop",
+  "block.food_mod_2.cheese_block": "Cheese Block",
+  "block.food_mod_2.ice_cream_maker": "Ice Cream Maker"
+}

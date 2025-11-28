@@ -1,0 +1,6 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "food_mod_2:block/blueberry_bush_stage0"
+  }
+}

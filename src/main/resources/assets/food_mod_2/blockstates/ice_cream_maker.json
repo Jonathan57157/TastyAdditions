@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "food_mod_2:block/ice_cream_maker" },
+    "facing=south": { "model": "food_mod_2:block/ice_cream_maker", "y": 180 },
+    "facing=west":  { "model": "food_mod_2:block/ice_cream_maker", "y": 270 },
+    "facing=east":  { "model": "food_mod_2:block/ice_cream_maker", "y": 90 }
+  }
+}
