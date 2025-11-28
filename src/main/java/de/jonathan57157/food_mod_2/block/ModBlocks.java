@@ -27,8 +27,7 @@ public class ModBlocks {
             new TomatoCropBlock(AbstractBlock.Settings.create().noCollision()
                     .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.RED)));
 
-
-//Comment
+    //Hello
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(FoodMod2.MOD_ID, name), block);
