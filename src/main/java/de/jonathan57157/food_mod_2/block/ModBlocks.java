@@ -28,7 +28,7 @@ public class ModBlocks {
                     .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.RED)));
 
 
-
+//Comment
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(FoodMod2.MOD_ID, name), block);
