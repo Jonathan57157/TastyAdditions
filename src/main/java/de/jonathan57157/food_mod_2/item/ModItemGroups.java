@@ -17,6 +17,7 @@ public class ModItemGroups {
                     .displayName(Text.translatable("itemgroup.food_mod_2.food_mod_items"))
                     .entries((displayContext, entries) -> {
                         entries.add(ModItems.ICE_CREAM_1_2_3);
+                        entries.add(ModItems.ICE_CREAM_1);
                         entries.add(ModItems.ICE_CREAM_WAFER);
                         entries.add(ModItems.SCOOP_OF_STRAWBERRY_ICE_CREAM);
                         entries.add(ModItems.SCOOP_OF_BLUEBERRY_ICE_CREAM);

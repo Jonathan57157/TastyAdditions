@@ -3,7 +3,9 @@ package de.jonathan57157.food_mod_2.item;
 import net.minecraft.component.type.FoodComponent;
 
 public class ModFoodComponents {
-    public static final FoodComponent ICE_CREAM_CONE = new FoodComponent.Builder().nutrition(5).saturationModifier(0.5f).build();
+    public static final FoodComponent ICE_CREAM_1_2_3 = new FoodComponent.Builder().nutrition(6).saturationModifier(0.5f).build();
+    public static final FoodComponent ICE_CREAM_1 = new FoodComponent.Builder().nutrition(4).saturationModifier(0.5f).build();
+
     public static final FoodComponent ICE_CREAM_WAFER = new FoodComponent.Builder().snack().nutrition(1).saturationModifier(0.3f).build();
     public static final FoodComponent BURGER = new FoodComponent.Builder().nutrition(6).saturationModifier(0.8f).build();
     public static final FoodComponent LETTUCE = new FoodComponent.Builder().snack().nutrition(2).saturationModifier(0.1f).build();

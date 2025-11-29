@@ -2,6 +2,7 @@
   "itemgroup.food_mod_2.food_mod_items": "Food Mod",
 
   "item.food_mod_2.ice_cream_1_2_3": "Ice Cream Cone",
+  "item.food_mod_2.ice_cream_1": "Ice Cream Cone",
   "item.food_mod_2.ice_cream_wafer": "Ice Cream Wafer",
   "item.food_mod_2.scoop_of_strawberry_ice_cream": "Scoop of Strawberry Ice Cream",
   "item.food_mod_2.scoop_of_blueberry_ice_cream": "Scoop of Blueberry Ice Cream",
@@ -18,5 +19,7 @@
 
   "block.food_mod_2.lettuce_crop": "Lettuce Crop",
   "block.food_mod_2.cheese_block": "Cheese Block",
-  "block.food_mod_2.ice_cream_maker": "Ice Cream Maker"
+  "block.food_mod_2.ice_cream_maker": "Ice Cream Maker",
+
+  "tooltip.food_mod_2.ice_cream_1_2_3.tooltip": "Strawberry, Blueberry and Apple"
 }

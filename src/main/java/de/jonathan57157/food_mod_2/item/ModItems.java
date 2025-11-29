@@ -4,13 +4,25 @@ import de.jonathan57157.food_mod_2.FoodMod2;
 import de.jonathan57157.food_mod_2.block.ModBlocks;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class ModItems {
 
-    public static final Item ICE_CREAM_1_2_3 = registerItem("ice_cream_1_2_3", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_CONE).maxCount(1)));
+    public static final Item ICE_CREAM_1_2_3 = registerItem("ice_cream_1_2_3", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_1_2_3).maxCount(1)) {
+        @Override
+        public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+            tooltip.add(Text.translatable("tooltip.food_mod_2.ice_cream_1_2_3.tooltip"));
+            super.appendTooltip(stack, context, tooltip, type);
+        }});
+    public static final Item ICE_CREAM_1 = registerItem("ice_cream_1", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_1).maxCount(1)));
+
     public static final Item ICE_CREAM_WAFER = registerItem("ice_cream_wafer", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_WAFER).maxCount(16)));
     public static final Item SCOOP_OF_STRAWBERRY_ICE_CREAM = registerItem("scoop_of_strawberry_ice_cream", new Item(new Item.Settings()));
     public static final Item SCOOP_OF_BLUEBERRY_ICE_CREAM = registerItem("scoop_of_blueberry_ice_cream", new Item(new Item.Settings()));
