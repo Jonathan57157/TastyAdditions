@@ -21,7 +21,18 @@ public class ModItems {
             tooltip.add(Text.translatable("tooltip.food_mod_2.ice_cream_1_2_3.tooltip"));
             super.appendTooltip(stack, context, tooltip, type);
         }});
-    public static final Item ICE_CREAM_1 = registerItem("ice_cream_1", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_1).maxCount(1)));
+    public static final Item ICE_CREAM_1 = registerItem("ice_cream_1", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_1).maxCount(1)) {
+        @Override
+        public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+            tooltip.add(Text.translatable("tooltip.food_mod_2.ice_cream_1.tooltip"));
+            super.appendTooltip(stack, context, tooltip, type);
+        }});
+    public static final Item ICE_CREAM_2 = registerItem("ice_cream_2", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_2).maxCount(1)) {
+        @Override
+        public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
+            tooltip.add(Text.translatable("tooltip.food_mod_2.ice_cream_2.tooltip"));
+            super.appendTooltip(stack, context, tooltip, type);
+        }});
 
     public static final Item ICE_CREAM_WAFER = registerItem("ice_cream_wafer", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_WAFER).maxCount(16)));
     public static final Item SCOOP_OF_STRAWBERRY_ICE_CREAM = registerItem("scoop_of_strawberry_ice_cream", new Item(new Item.Settings()));
