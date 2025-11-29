@@ -13,10 +13,10 @@ import net.minecraft.util.Identifier;
 public class ModItemGroups {
     public static final ItemGroup FOOD_MOD_ITEM_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(FoodMod2.MOD_ID, "food_mod_items"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ICE_CREAM_CONE))
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ICE_CREAM_1_2_3))
                     .displayName(Text.translatable("itemgroup.food_mod_2.food_mod_items"))
                     .entries((displayContext, entries) -> {
-                        entries.add(ModItems.ICE_CREAM_CONE);
+                        entries.add(ModItems.ICE_CREAM_1_2_3);
                         entries.add(ModItems.ICE_CREAM_WAFER);
                         entries.add(ModItems.SCOOP_OF_STRAWBERRY_ICE_CREAM);
                         entries.add(ModItems.SCOOP_OF_BLUEBERRY_ICE_CREAM);
