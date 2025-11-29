@@ -69,4 +69,14 @@ public class BlueberryBushBlock extends SweetBerryBushBlock {
         return true;
     }
 
+    @Override
+    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+            entity.slowMovement(state, new Vec3d(0.8F, 0.75, 0.8F));
+            if (!world.isClient && (Integer)state.get(AGE) > 0 && (entity.lastRenderX != entity.getX() || entity.lastRenderZ != entity.getZ())) {
+                double d = Math.abs(entity.getX() - entity.lastRenderX);
+                double e = Math.abs(entity.getZ() - entity.lastRenderZ);
+            }
+        }
+    }
 }
