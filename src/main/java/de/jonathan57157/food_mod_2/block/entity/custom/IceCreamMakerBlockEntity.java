@@ -34,8 +34,8 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
-    private static final int OUTPUT_SLOT = 1;
-    private static final int INPUT_SLOT_2 = 2;
+    private static final int INPUT_SLOT_2 = 1;
+    private static final int OUTPUT_SLOT = 2;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -161,7 +161,7 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
                 .getFirstMatch(ModRecipes.ICE_CREAM_MAKER_TYPE,
                         new IceCreamMakerRecipeInput(
                                 inventory.get(0),  // blueberries
-                                inventory.get(2)   // milk
+                                inventory.get(1)   // milk
                         ),
                         this.world
                 );

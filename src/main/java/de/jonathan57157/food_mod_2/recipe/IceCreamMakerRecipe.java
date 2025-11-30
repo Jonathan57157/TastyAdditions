@@ -18,9 +18,9 @@ public record IceCreamMakerRecipe(Ingredient input1, Ingredient input2, ItemStac
 
     @Override
     public DefaultedList<Ingredient> getIngredients() {
-        DefaultedList<Ingredient> list = DefaultedList.ofSize(2);
-        list.set(0, input1);
-        list.set(1, input2);
+        DefaultedList<Ingredient> list = DefaultedList.ofSize(2, Ingredient.EMPTY);
+        list.set(0, input1());
+        list.set(1, input2());
         return list;
     }
 

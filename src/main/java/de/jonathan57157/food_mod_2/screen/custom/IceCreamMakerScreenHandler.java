@@ -30,8 +30,8 @@ public class IceCreamMakerScreenHandler extends ScreenHandler {
         this.propertyDelegate = arrayPropertyDelegate;
 
         this.addSlot(new Slot(inventory, 0, 54, 46));//slot unten
-        this.addSlot(new Slot(inventory, 1, 104, 34));//slot mitte hinten
-        this.addSlot(new Slot(inventory, 2, 54, 22));//slot oben
+        this.addSlot(new Slot(inventory, 1, 54, 22));//slot oben
+        this.addSlot(new Slot(inventory, 2, 104, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
