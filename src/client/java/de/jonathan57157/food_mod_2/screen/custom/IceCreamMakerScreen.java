@@ -35,7 +35,7 @@ public class IceCreamMakerScreen extends HandledScreen<IceCreamMakerScreenHandle
 
     private void renderProgressArrow(DrawContext context, int x, int y) {
         if(handler.isCrafting()) {
-            context.drawTexture(ARROW_TEXTURE, x + 73, y + 35, 0, 0,
+            context.drawTexture(ARROW_TEXTURE, x + 89, y + 34, 0, 0,
                     handler.getScaledArrowProgress(), 16, 24, 16);
         }
     }

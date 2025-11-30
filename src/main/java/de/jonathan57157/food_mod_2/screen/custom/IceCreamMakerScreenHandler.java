@@ -13,6 +13,7 @@ import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.util.math.BlockPos;
 
+
 public class IceCreamMakerScreenHandler extends ScreenHandler {
     private final Inventory inventory;
     private final PropertyDelegate propertyDelegate;
@@ -29,9 +30,9 @@ public class IceCreamMakerScreenHandler extends ScreenHandler {
         this.blockEntity = ((IceCreamMakerBlockEntity) blockEntity);
         this.propertyDelegate = arrayPropertyDelegate;
 
-        this.addSlot(new Slot(inventory, 0, 54, 46));//slot unten
-        this.addSlot(new Slot(inventory, 1, 54, 22));//slot oben
-        this.addSlot(new Slot(inventory, 2, 104, 34));
+        this.addSlot(new Slot(inventory, 0, 32, 34));//slot unten
+        this.addSlot(new Slot(inventory, 1, 65, 34));//slot oben
+        this.addSlot(new Slot(inventory, 2, 124, 34));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);

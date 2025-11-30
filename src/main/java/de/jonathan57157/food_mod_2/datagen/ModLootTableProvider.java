@@ -1,11 +1,13 @@
 package de.jonathan57157.food_mod_2.datagen;
 
 import de.jonathan57157.food_mod_2.block.ModBlocks;
+import de.jonathan57157.food_mod_2.block.custom.BlueberryBushBlock;
 import de.jonathan57157.food_mod_2.block.custom.LettuceCropBlock;
 import de.jonathan57157.food_mod_2.block.custom.TomatoCropBlock;
 import de.jonathan57157.food_mod_2.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
+import net.minecraft.block.Block;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.RegistryWrapper;

@@ -26,16 +26,24 @@ public record IceCreamMakerRecipe(Ingredient input1, Ingredient input2, ItemStac
 
     @Override
     public boolean matches(IceCreamMakerRecipeInput input, World world) {
-        if(world.isClient()) return false;
+        if (world.isClient()) return false;
 
-        return input1.test(input.getStackInSlot(0))
-                && input2.test(input.getStackInSlot(1));
+        boolean normal =
+                input1.test(input.getStackInSlot(0)) &&
+                        input2.test(input.getStackInSlot(1));
+
+        boolean swapped =
+                input1.test(input.getStackInSlot(1)) &&
+                        input2.test(input.getStackInSlot(0));
+
+        return normal || swapped;
     }
 
     @Override
     public ItemStack craft(IceCreamMakerRecipeInput input, RegistryWrapper.WrapperLookup lookup) {
         return output.copy();
     }
+
 
     @Override
     public boolean fits(int width, int height) {

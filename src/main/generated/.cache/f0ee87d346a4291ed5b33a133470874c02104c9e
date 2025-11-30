@@ -1,6 +1,7 @@
-// 1.21	2025-11-29T19:39:49.781455	Food Mod 2/Block Loot Tables
-215558aa92467d9b74bcc91f30714a7577c3b9f1 data\food_mod_2\loot_table\blocks\burger_block.json
-caf37086d2e20878b2b59d6edbf1739e8594e40b data\food_mod_2\loot_table\blocks\tomato_crop.json
+// 1.21	2025-11-30T20:44:14.8922889	Food Mod 2/Block Loot Tables
 4b9092917b211106af18bf851a1ddcaea7f282ca data\food_mod_2\loot_table\blocks\cheese_block.json
+5ce677ca42b1dfbbc77f1d921bfdcef355e1a3d5 data\food_mod_2\loot_table\blocks\blueberry_bush.json
 460d19e79f0eba227d5d7dcac5842c742ece5f7e data\food_mod_2\loot_table\blocks\ice_cream_maker.json
+caf37086d2e20878b2b59d6edbf1739e8594e40b data\food_mod_2\loot_table\blocks\tomato_crop.json
 0819f7f4f76379f0249074f2f9b142304944a0d5 data\food_mod_2\loot_table\blocks\lettuce_crop.json
+215558aa92467d9b74bcc91f30714a7577c3b9f1 data\food_mod_2\loot_table\blocks\burger_block.json
