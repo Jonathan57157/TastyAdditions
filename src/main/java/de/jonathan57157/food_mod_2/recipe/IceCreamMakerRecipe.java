@@ -13,23 +13,23 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public record IceCreamMakerRecipe(Ingredient inputItem, ItemStack output) implements Recipe<IceCreamMakerRecipeInput> {
+public record IceCreamMakerRecipe(Ingredient input1, Ingredient input2, ItemStack output)
+        implements Recipe<IceCreamMakerRecipeInput> {
+
     @Override
     public DefaultedList<Ingredient> getIngredients() {
-        DefaultedList<Ingredient> list = DefaultedList.of();
-        list.add(this.inputItem);
+        DefaultedList<Ingredient> list = DefaultedList.ofSize(2);
+        list.set(0, input1);
+        list.set(1, input2);
         return list;
     }
 
-    // read Recipe JSON files --> new GrowthChamberRecipe
-
     @Override
     public boolean matches(IceCreamMakerRecipeInput input, World world) {
-        if(world.isClient()) {
-            return false;
-        }
+        if(world.isClient()) return false;
 
-        return inputItem.test(input.getStackInSlot(0));
+        return input1.test(input.getStackInSlot(0))
+                && input2.test(input.getStackInSlot(1));
     }
 
     @Override
@@ -39,12 +39,12 @@ public record IceCreamMakerRecipe(Ingredient inputItem, ItemStack output) implem
 
     @Override
     public boolean fits(int width, int height) {
-        return true;
+        return false;
     }
 
     @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return output;
+        return output.copy();
     }
 
     @Override
@@ -58,14 +58,18 @@ public record IceCreamMakerRecipe(Ingredient inputItem, ItemStack output) implem
     }
 
     public static class Serializer implements RecipeSerializer<IceCreamMakerRecipe> {
-        public static final MapCodec<IceCreamMakerRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
-                Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient").forGetter(IceCreamMakerRecipe::inputItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(IceCreamMakerRecipe::output)
-        ).apply(inst, IceCreamMakerRecipe::new));
+
+        public static final MapCodec<IceCreamMakerRecipe> CODEC =
+                RecordCodecBuilder.mapCodec(inst -> inst.group(
+                        Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient1").forGetter(IceCreamMakerRecipe::input1),
+                        Ingredient.DISALLOW_EMPTY_CODEC.fieldOf("ingredient2").forGetter(IceCreamMakerRecipe::input2),
+                        ItemStack.CODEC.fieldOf("result").forGetter(IceCreamMakerRecipe::output)
+                ).apply(inst, IceCreamMakerRecipe::new));
 
         public static final PacketCodec<RegistryByteBuf, IceCreamMakerRecipe> STREAM_CODEC =
                 PacketCodec.tuple(
-                        Ingredient.PACKET_CODEC, IceCreamMakerRecipe::inputItem,
+                        Ingredient.PACKET_CODEC, IceCreamMakerRecipe::input1,
+                        Ingredient.PACKET_CODEC, IceCreamMakerRecipe::input2,
                         ItemStack.PACKET_CODEC, IceCreamMakerRecipe::output,
                         IceCreamMakerRecipe::new);
 

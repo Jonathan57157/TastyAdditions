@@ -2,7 +2,6 @@ package de.jonathan57157.food_mod_2.block.entity.custom;
 
 import de.jonathan57157.food_mod_2.block.entity.ImplementedInventory;
 import de.jonathan57157.food_mod_2.block.entity.ModBlockEntities;
-import de.jonathan57157.food_mod_2.item.ModItems;
 import de.jonathan57157.food_mod_2.recipe.IceCreamMakerRecipe;
 import de.jonathan57157.food_mod_2.recipe.IceCreamMakerRecipeInput;
 import de.jonathan57157.food_mod_2.recipe.ModRecipes;
@@ -13,7 +12,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -33,10 +31,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class IceCreamMakerBlockEntity extends BlockEntity implements ImplementedInventory, ExtendedScreenHandlerFactory<BlockPos> {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(2, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
+    private static final int INPUT_SLOT_2 = 2;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
@@ -64,7 +63,7 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
 
             @Override
             public int size() {
-                return 2;
+                return 3;
             }
         };
     }
@@ -94,15 +93,15 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.writeNbt(nbt, registryLookup);
         Inventories.writeNbt(nbt, inventory, registryLookup);
-        nbt.putInt("growth_chamber.progress", progress);
-        nbt.putInt("growth_chamber.max_progress", maxProgress);
+        nbt.putInt("ice_cream_maker.progress", progress);
+        nbt.putInt("ice_cream_maker.max_progress", maxProgress);
     }
 
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         Inventories.readNbt(nbt, inventory, registryLookup);
-        progress = nbt.getInt("growth_chamber.progress");
-        maxProgress = nbt.getInt("growth_chamber.max_progress");
+        progress = nbt.getInt("ice_cream_maker.progress");
+        maxProgress = nbt.getInt("ice_cream_maker.max_progress");
         super.readNbt(nbt, registryLookup);
     }
 
@@ -130,6 +129,7 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
 
         ItemStack output = recipe.get().value().output();
         this.removeStack(INPUT_SLOT, 1);
+        this.removeStack(INPUT_SLOT_2, 1);
         this.setStack(OUTPUT_SLOT, new ItemStack(output.getItem(),
                 this.getStack(OUTPUT_SLOT).getCount() + output.getCount()));
     }
@@ -144,17 +144,27 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
 
     private boolean hasRecipe() {
         Optional<RecipeEntry<IceCreamMakerRecipe>> recipe = getCurrentRecipe();
-        if(recipe.isEmpty()) {
-            return false;
-        }
+        if(recipe.isEmpty()) return false;
 
-        ItemStack output = recipe.get().value().output();
-        return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        IceCreamMakerRecipe r = recipe.get().value();
+        ItemStack output = r.output();
+
+        return
+                canInsertAmountIntoOutputSlot(output.getCount()) &&
+                        canInsertItemIntoOutputSlot(output) &&
+                        matchesInputs(r);
     }
 
+
     private Optional<RecipeEntry<IceCreamMakerRecipe>> getCurrentRecipe() {
-        return this.getWorld().getRecipeManager()
-                .getFirstMatch(ModRecipes.ICE_CREAM_MAKER_TYPE, new IceCreamMakerRecipeInput(inventory.get(INPUT_SLOT)), this.getWorld());
+        return this.world.getRecipeManager()
+                .getFirstMatch(ModRecipes.ICE_CREAM_MAKER_TYPE,
+                        new IceCreamMakerRecipeInput(
+                                inventory.get(0),  // blueberries
+                                inventory.get(2)   // milk
+                        ),
+                        this.world
+                );
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
@@ -166,6 +176,18 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
         int currentCount = this.getStack(OUTPUT_SLOT).getCount();
 
         return maxCount >= currentCount + count;
+    }
+
+    private boolean matchesInputs(IceCreamMakerRecipe recipe) {
+        ItemStack stack1 = this.getStack(INPUT_SLOT);
+        ItemStack stack2 = this.getStack(INPUT_SLOT_2);
+
+        var ingredients = recipe.getIngredients();
+
+        if (ingredients.size() < 2) return false;
+        if (stack1.isEmpty() || stack2.isEmpty()) return false;
+
+        return ingredients.get(0).test(stack1) && ingredients.get(1).test(stack2);
     }
 
     @Nullable

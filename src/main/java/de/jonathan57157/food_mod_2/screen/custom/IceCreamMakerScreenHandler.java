@@ -19,7 +19,7 @@ public class IceCreamMakerScreenHandler extends ScreenHandler {
     public final IceCreamMakerBlockEntity blockEntity;
 
     public IceCreamMakerScreenHandler(int syncId, PlayerInventory inventory, BlockPos pos) {
-        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(2));
+        this(syncId, inventory, inventory.player.getWorld().getBlockEntity(pos), new ArrayPropertyDelegate(3));
     }
 
     public IceCreamMakerScreenHandler(int syncId, PlayerInventory playerInventory,
@@ -29,8 +29,9 @@ public class IceCreamMakerScreenHandler extends ScreenHandler {
         this.blockEntity = ((IceCreamMakerBlockEntity) blockEntity);
         this.propertyDelegate = arrayPropertyDelegate;
 
-        this.addSlot(new Slot(inventory, 0, 54, 34));
-        this.addSlot(new Slot(inventory, 1, 104, 34));
+        this.addSlot(new Slot(inventory, 0, 54, 46));//slot unten
+        this.addSlot(new Slot(inventory, 1, 104, 34));//slot mitte hinten
+        this.addSlot(new Slot(inventory, 2, 54, 22));//slot oben
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
