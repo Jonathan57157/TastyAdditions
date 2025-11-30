@@ -23,7 +23,7 @@ public class FoodMod2 implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModRecipes.registerRecipes();
 
-		CompostingChanceRegistry.INSTANCE.add(ModItems.LETTUCE_SEEDS,0.25f);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.LETTUCE_SEEDS,0.25f);
 	}
 }
 

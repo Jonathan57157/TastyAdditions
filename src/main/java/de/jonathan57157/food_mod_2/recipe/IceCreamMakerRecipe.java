@@ -39,7 +39,7 @@ public record IceCreamMakerRecipe(Ingredient input1, Ingredient input2, ItemStac
 
     @Override
     public boolean fits(int width, int height) {
-        return false;
+        return true;
     }
 
     @Override
