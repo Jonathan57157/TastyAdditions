@@ -1,0 +1,16 @@
+{
+  "type": "food_mod_2:ice_cream_maker",
+
+  "ingredient1": {
+    "item": "minecraft:apple"
+  },
+
+  "ingredient2": {
+    "item": "minecraft:milk_bucket"
+  },
+
+  "result": {
+    "id": "food_mod_2:scoop_of_apple_ice_cream",
+    "count": 1
+  }
+}
