@@ -14,4 +14,5 @@ public class ModFoodComponents {
     public static final FoodComponent PUMPKIN_SOUP = new FoodComponent.Builder().nutrition(5).saturationModifier(0.7f).build();
     public static final FoodComponent TOMATO = new FoodComponent.Builder().nutrition(3).saturationModifier(0.2f).snack().build();
     public static final FoodComponent BLUEBERRIES = new FoodComponent.Builder().nutrition(2).saturationModifier(0.15f).snack().build();
+    public static final FoodComponent STRAWBERRY = new FoodComponent.Builder().nutrition(2).saturationModifier(0.15f).snack().build();
 }

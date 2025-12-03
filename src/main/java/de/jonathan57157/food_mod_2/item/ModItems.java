@@ -48,6 +48,7 @@ public class ModItems {
     public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new AliasedBlockItem(ModBlocks.TOMATO_CROP, new Item.Settings()));
     public static final Item BLUEBERRIES = registerItem("blueberries", new Item(new Item.Settings().food(ModFoodComponents.BLUEBERRIES)));
     public static final Item BLUEBERRY_SEEDS = registerItem("blueberry_seeds", new AliasedBlockItem(ModBlocks.BLUEBERRY_BUSH, new Item.Settings()));
+    public static final Item STRAWBERRY = registerItem("strawberry", new Item(new Item.Settings().food(ModFoodComponents.STRAWBERRY)));
 
     private static Item registerItem(String name , Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(FoodMod2.MOD_ID, name), item);

@@ -35,6 +35,7 @@ public class ModItemGroups {
                         entries.add(ModItems.TOMATO_SEEDS);
                         entries.add(ModItems.BLUEBERRY_SEEDS);
                         entries.add(ModItems.BLUEBERRIES);
+                        entries.add(ModItems.STRAWBERRY);
                     }).build());
 
     public static void registerItemGroups() {
