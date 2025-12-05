@@ -2,9 +2,7 @@ package de.jonathan57157.food_mod_2.item;
 
 import de.jonathan57157.food_mod_2.FoodMod2;
 import de.jonathan57157.food_mod_2.block.ModBlocks;
-import net.minecraft.item.AliasedBlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -46,9 +44,10 @@ public class ModItems {
     public static final Item PUMPKIN_SOUP = registerItem("pumpkin_soup", new Item(new Item.Settings().food(ModFoodComponents.PUMPKIN_SOUP)));
     public static final Item TOMATO = registerItem("tomato", new Item(new Item.Settings().food(ModFoodComponents.TOMATO)));
     public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new AliasedBlockItem(ModBlocks.TOMATO_CROP, new Item.Settings()));
-    public static final Item BLUEBERRIES = registerItem("blueberries", new Item(new Item.Settings().food(ModFoodComponents.BLUEBERRIES)));
+    public static final Item BLUEBERRY = registerItem("blueberry", new Item(new Item.Settings().food(ModFoodComponents.BLUEBERRIES)));
     public static final Item BLUEBERRY_SEEDS = registerItem("blueberry_seeds", new AliasedBlockItem(ModBlocks.BLUEBERRY_BUSH, new Item.Settings()));
     public static final Item STRAWBERRY = registerItem("strawberry", new Item(new Item.Settings().food(ModFoodComponents.STRAWBERRY)));
+    public static final Item KNIFE = registerItem("knife", new SwordItem(ToolMaterials.IRON, new Item.Settings()));
 
     private static Item registerItem(String name , Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(FoodMod2.MOD_ID, name), item);

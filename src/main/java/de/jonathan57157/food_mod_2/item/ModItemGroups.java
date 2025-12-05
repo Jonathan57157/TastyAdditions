@@ -27,15 +27,16 @@ public class ModItemGroups {
                         entries.add(ModItems.LETTUCE);
                         entries.add(ModItems.LETTUCE_SEEDS);
                         entries.add(ModItems.CHEESE);
-                        entries.add(ModBlocks.ICE_CREAM_MAKER);
-                        entries.add(ModBlocks.CHEESE_BLOCK);
                         entries.add(ModItems.PUMPKIN_SOUP);
-                        entries.add(ModItems.APPLE_JUICE);
                         entries.add(ModItems.TOMATO);
                         entries.add(ModItems.TOMATO_SEEDS);
                         entries.add(ModItems.BLUEBERRY_SEEDS);
-                        entries.add(ModItems.BLUEBERRIES);
+                        entries.add(ModItems.BLUEBERRY);
                         entries.add(ModItems.STRAWBERRY);
+                        entries.add(ModItems.KNIFE);
+
+                        entries.add(ModBlocks.ICE_CREAM_MAKER);
+                        entries.add(ModBlocks.CHEESE_BLOCK);
                     }).build());
 
     public static void registerItemGroups() {

@@ -1,4 +1,4 @@
-// 1.21	2025-12-02T18:14:15.873288	Food Mod 2/Model Definitions
+// 1.21	2025-12-05T16:33:25.2034435	Food Mod 2/Model Definitions
 19eaee67711099d765d555b094dab1ca8a9a196b assets\food_mod_2\models\block\tomato_crop_stage5.json
 937883881543fa581d31d445e9a9385ec8ed24a2 assets\food_mod_2\blockstates\tomato_crop.json
 446977874b963e8f9f5133de8a3f80ee6fcd05e7 assets\food_mod_2\models\block\lettuce_crop_stage3.json
@@ -19,9 +19,10 @@ fbad388b7e32c4af388e7112656423a6dad5cfd2 assets\food_mod_2\models\block\blueberr
 f3d649adf848f2b9b9c4440c4b629ed4692b3cde assets\food_mod_2\models\block\tomato_crop_stage1.json
 0bca71b4d93d4664212e09035c2b8303186fdba6 assets\food_mod_2\models\block\tomato_crop_stage4.json
 aeac829ea168f04bb253541d9f6c4327e0066a44 assets\food_mod_2\models\block\blueberry_bush_stage3.json
+e937e1feb4ee6e99fd13aa4041695887bd7253a4 assets\food_mod_2\models\item\knife.json
 c8b7588289ac2691339fb734eabe01fb4c58f258 assets\food_mod_2\blockstates\blueberry_bush.json
-2300e21fcb6708d14890f6d1bc38ace6aa8a33c6 assets\food_mod_2\models\item\blueberries.json
 727e7db71c5509e7588bd5548823311c1ca2db27 assets\food_mod_2\models\item\cheese_block.json
+469ac9d8e07f2b608647cae74c65962ed1dc366d assets\food_mod_2\models\item\blueberry.json
 5f35783a5517bd48db1b343acf4a4b53b0b86eaa assets\food_mod_2\blockstates\lettuce_crop.json
 7f01ecbccf0e66f754fc9dee0594a018afc209cc assets\food_mod_2\models\block\lettuce_crop_stage1.json
 0c9a6bf437daa0cc38261d2d8019d5606c2beb2f assets\food_mod_2\models\block\lettuce_crop_stage4.json
