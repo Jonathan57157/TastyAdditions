@@ -2,7 +2,7 @@
   "type": "food_mod_2:ice_cream_maker",
 
   "ingredient1": {
-    "item": "food_mod_2:blueberries"
+    "item": "food_mod_2:blueberry"
   },
 
   "ingredient2": {
