@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "food_mod_2:block/cutting_board" },
+    "facing=south": { "model": "food_mod_2:block/cutting_board", "y": 180 },
+    "facing=west":  { "model": "food_mod_2:block/cutting_board", "y": 270 },
+    "facing=east":  { "model": "food_mod_2:block/cutting_board", "y": 90 }
+  }
+}

@@ -37,6 +37,7 @@ public class ModItemGroups {
 
                         entries.add(ModBlocks.ICE_CREAM_MAKER);
                         entries.add(ModBlocks.CHEESE_BLOCK);
+                        entries.add(ModBlocks.CUTTING_BOARD);
                     }).build());
 
     public static void registerItemGroups() {

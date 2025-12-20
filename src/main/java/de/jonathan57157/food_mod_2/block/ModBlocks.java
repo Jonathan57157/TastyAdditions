@@ -26,6 +26,7 @@ public class ModBlocks {
     public static final Block TOMATO_CROP = registerBlockWithoutBlockItem("tomato_crop",
             new TomatoCropBlock(AbstractBlock.Settings.create().noCollision()
                     .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.RED)));
+    public static final Block CUTTING_BOARD = registerBlock("cutting_board", new CuttingBoardBlock(AbstractBlock.Settings.create()));
 
     //Hello
     private static Block registerBlock(String name, Block block) {

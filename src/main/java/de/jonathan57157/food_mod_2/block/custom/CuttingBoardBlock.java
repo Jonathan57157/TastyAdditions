@@ -1,47 +1,36 @@
 package de.jonathan57157.food_mod_2.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import de.jonathan57157.food_mod_2.block.entity.ModBlockEntities;
-import de.jonathan57157.food_mod_2.block.entity.custom.IceCreamMakerBlockEntity;
-
+import de.jonathan57157.food_mod_2.block.entity.custom.CuttingBoardBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.block.entity.BlockEntityTicker;
-import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.NamedScreenHandlerFactory;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityProvider {
-
+public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityProvider {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
-    public static final MapCodec<IceCreamMakerBlock> CODEC = IceCreamMakerBlock.createCodec(IceCreamMakerBlock::new);
+    public static final MapCodec<CuttingBoardBlock> CODEC = CuttingBoardBlock.createCodec(CuttingBoardBlock::new);
 
-    private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(0.0, 0.0, 3.0, 16.0, 8.0, 13.0);
-    private static final VoxelShape SHAPE_EAST  = Block.createCuboidShape(3.0, 0.0, 0.0, 13.0, 8.0, 16.0);
-    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(0.0, 0.0, 3.0, 16.0, 8.0, 13.0);
-    private static final VoxelShape SHAPE_WEST  = Block.createCuboidShape(3.0, 0.0, 0.0, 13.0, 8.0, 16.0);
+    private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(1, 0, 3, 14, 1, 13);
+    private static final VoxelShape SHAPE_EAST  = Block.createCuboidShape(3, 0, 1, 13, 1, 14);
+    private static final VoxelShape SHAPE_SOUTH = Block.createCuboidShape(2, 0, 3, 15, 1, 13);
+    private static final VoxelShape SHAPE_WEST  = Block.createCuboidShape(3, 0, 2, 13, 1, 15);
 
-
-
-    public IceCreamMakerBlock(Settings settings) {
+    public CuttingBoardBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
@@ -65,7 +54,7 @@ public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityPr
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new IceCreamMakerBlockEntity(pos, state);
+        return new CuttingBoardBlockEntity(pos, state);
     }
 
     @Override
@@ -93,13 +82,12 @@ public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityPr
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 
-
     @Override
     protected void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if(state.getBlock() != newState.getBlock()) {
+        if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if(blockEntity instanceof IceCreamMakerBlockEntity iceCreamMaker) {
-                ItemScatterer.spawn(world, pos, iceCreamMaker);
+            if (blockEntity instanceof CuttingBoardBlockEntity) {
+                ItemScatterer.spawn(world, pos, ((CuttingBoardBlockEntity) blockEntity));
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -109,23 +97,25 @@ public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityPr
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
                                              PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient) {
-            NamedScreenHandlerFactory screenHandlerFactory =
-                    (NamedScreenHandlerFactory) world.getBlockEntity(pos);
+        if (world.getBlockEntity(pos) instanceof CuttingBoardBlockEntity cuttingBoardBlockEntity) {
+            if (cuttingBoardBlockEntity.isEmpty() && !stack.isEmpty()) {
+                cuttingBoardBlockEntity.setStack(0, stack.copyWithCount(1));
+                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
+                stack.decrement(1);
 
-            if (screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+                cuttingBoardBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
+            } else if (stack.isEmpty() && !player.isSneaking()) {
+                ItemStack stackOnPedestal = cuttingBoardBlockEntity.getStack(0);
+                player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
+                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
+                cuttingBoardBlockEntity.clear();
+
+                cuttingBoardBlockEntity.markDirty();
+                world.updateListeners(pos, state, state, 0);
             }
         }
+
         return ItemActionResult.SUCCESS;
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        if(world.isClient()) return null;
-
-        return validateTicker(type, ModBlockEntities.ICE_CREAM_MAKER_BE,
-                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
     }
 }
