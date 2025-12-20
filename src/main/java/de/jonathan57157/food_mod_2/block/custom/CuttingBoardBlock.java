@@ -2,11 +2,13 @@ package de.jonathan57157.food_mod_2.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import de.jonathan57157.food_mod_2.block.entity.custom.CuttingBoardBlockEntity;
+import de.jonathan57157.food_mod_2.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -95,27 +97,67 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
-                                             PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (world.getBlockEntity(pos) instanceof CuttingBoardBlockEntity cuttingBoardBlockEntity) {
-            if (cuttingBoardBlockEntity.isEmpty() && !stack.isEmpty()) {
-                cuttingBoardBlockEntity.setStack(0, stack.copyWithCount(1));
-                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 2f);
-                stack.decrement(1);
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state,
+                                             World world, BlockPos pos,
+                                             PlayerEntity player, Hand hand,
+                                             BlockHitResult hit) {
 
-                cuttingBoardBlockEntity.markDirty();
-                world.updateListeners(pos, state, state, 0);
-            } else if (stack.isEmpty() && !player.isSneaking()) {
-                ItemStack stackOnPedestal = cuttingBoardBlockEntity.getStack(0);
-                player.setStackInHand(Hand.MAIN_HAND, stackOnPedestal);
-                world.playSound(player, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
-                cuttingBoardBlockEntity.clear();
+        if (world.isClient) return ItemActionResult.SUCCESS;
 
-                cuttingBoardBlockEntity.markDirty();
-                world.updateListeners(pos, state, state, 0);
+        if (!(world.getBlockEntity(pos) instanceof CuttingBoardBlockEntity board))
+            return ItemActionResult.SUCCESS;
+
+        ItemStack held = player.getStackInHand(hand);
+
+        /* 📦 ITEM AUF BRETT LEGEN */
+        if (!held.isEmpty() && board.isEmpty() && !held.isOf(ModItems.KNIFE)) {
+
+            ItemStack one = held.copyWithCount(1);
+            board.setStack(one);
+            held.decrement(1);
+
+            world.playSound(null, pos,
+                    SoundEvents.ENTITY_ITEM_PICKUP,
+                    SoundCategory.BLOCKS, 1f, 1.5f);
+
+            board.markDirty();
+            return ItemActionResult.SUCCESS;
+        }
+
+        /* 🔪 SCHNEIDEN */
+        if (held.isOf(ModItems.KNIFE) && !board.isEmpty()) {
+
+            ItemStack input = board.getStack();
+
+            // 👉 Beispiel-Rezept: Karotte → 2x Karotte
+            if (input.isOf(ModItems.TOMATO)) {
+                board.removeStack();
+                player.giveItemStack(new ItemStack(ModItems.TOMATO_SLICE, 2));
+
+                world.playSound(null, pos,
+                        SoundEvents.BLOCK_WOOD_HIT,
+                        SoundCategory.BLOCKS, 1f, 1f);
             }
+
+            board.markDirty();
+            return ItemActionResult.SUCCESS;
+        }
+
+        /* ↩ ITEM ZURÜCKNEHMEN */
+        if (held.isEmpty() && !board.isEmpty()) {
+
+            player.setStackInHand(hand, board.removeStack());
+
+            world.playSound(null, pos,
+                    SoundEvents.ENTITY_ITEM_PICKUP,
+                    SoundCategory.BLOCKS, 1f, 1f);
+
+            board.markDirty();
+            return ItemActionResult.SUCCESS;
         }
 
         return ItemActionResult.SUCCESS;
     }
+
+
 }

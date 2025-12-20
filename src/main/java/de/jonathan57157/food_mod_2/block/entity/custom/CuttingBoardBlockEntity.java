@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-    private float rotation = 0;
+    private ItemStack stack = ItemStack.EMPTY;
 
     public CuttingBoardBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CUTTING_BOARD_BE, pos, state);
@@ -25,14 +25,6 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     @Override
     public DefaultedList<ItemStack> getItems() {
         return inventory;
-    }
-
-    public float getRenderingRotation() {
-        rotation += 0.5f;
-        if(rotation >= 360) {
-            rotation = 0;
-        }
-        return rotation;
     }
 
     @Override
@@ -55,5 +47,25 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     @Override
     public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
         return createNbt(registryLookup);
+    }
+
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
+
+    public ItemStack getStack() {
+        return stack;
+    }
+
+    public void setStack(ItemStack stack) {
+        this.stack = stack;
+        markDirty();
+    }
+
+    public ItemStack removeStack() {
+        ItemStack result = stack;
+        stack = ItemStack.EMPTY;
+        markDirty();
+        return result;
     }
 }

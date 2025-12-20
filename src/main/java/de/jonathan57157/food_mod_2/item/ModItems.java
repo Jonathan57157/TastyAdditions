@@ -43,6 +43,7 @@ public class ModItems {
     public static final Item APPLE_JUICE = registerItem("apple_juice", new DrinkableItem(new Item.Settings()));
     public static final Item PUMPKIN_SOUP = registerItem("pumpkin_soup", new Item(new Item.Settings().food(ModFoodComponents.PUMPKIN_SOUP)));
     public static final Item TOMATO = registerItem("tomato", new Item(new Item.Settings().food(ModFoodComponents.TOMATO)));
+    public static final Item TOMATO_SLICE = registerItem("tomato_slice", new Item(new Item.Settings().food(ModFoodComponents.TOMATO)));
     public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new AliasedBlockItem(ModBlocks.TOMATO_CROP, new Item.Settings()));
     public static final Item BLUEBERRY = registerItem("blueberry", new Item(new Item.Settings().food(ModFoodComponents.BLUEBERRIES)));
     public static final Item BLUEBERRY_SEEDS = registerItem("blueberry_seeds", new AliasedBlockItem(ModBlocks.BLUEBERRY_BUSH, new Item.Settings()));
