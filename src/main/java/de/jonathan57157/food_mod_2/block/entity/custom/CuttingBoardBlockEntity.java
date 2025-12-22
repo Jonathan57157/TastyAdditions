@@ -15,28 +15,59 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 
 public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedInventory {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
-    private ItemStack stack = ItemStack.EMPTY;
+
+    private final DefaultedList<ItemStack> inventory =
+            DefaultedList.ofSize(1, ItemStack.EMPTY);
 
     public CuttingBoardBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CUTTING_BOARD_BE, pos, state);
     }
+
+    /* ---------- INVENTORY ---------- */
 
     @Override
     public DefaultedList<ItemStack> getItems() {
         return inventory;
     }
 
+    public boolean isEmpty() {
+        return inventory.get(0).isEmpty();
+    }
+
+    public ItemStack getStack() {
+        return inventory.get(0);
+    }
+
+    public void setStack(ItemStack stack) {
+        inventory.set(0, stack);
+        markDirty();
+        if (world != null) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+    }
+
+    public ItemStack removeStack() {
+        ItemStack result = inventory.get(0);
+        inventory.set(0, ItemStack.EMPTY);
+        markDirty();
+        if (world != null) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
+        }
+        return result;
+    }
+
+    /* ---------- NBT / SYNC ---------- */
+
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
-        Inventories.writeNbt(nbt, inventory, registryLookup);
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
+        super.writeNbt(nbt, lookup);
+        Inventories.writeNbt(nbt, inventory, lookup);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        Inventories.readNbt(nbt, inventory, registryLookup);
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
+        super.readNbt(nbt, lookup);
+        Inventories.readNbt(nbt, inventory, lookup);
     }
 
     @Override
@@ -45,27 +76,7 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-        return createNbt(registryLookup);
-    }
-
-    public boolean isEmpty() {
-        return stack.isEmpty();
-    }
-
-    public ItemStack getStack() {
-        return stack;
-    }
-
-    public void setStack(ItemStack stack) {
-        this.stack = stack;
-        markDirty();
-    }
-
-    public ItemStack removeStack() {
-        ItemStack result = stack;
-        stack = ItemStack.EMPTY;
-        markDirty();
-        return result;
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup lookup) {
+        return createNbt(lookup);
     }
 }

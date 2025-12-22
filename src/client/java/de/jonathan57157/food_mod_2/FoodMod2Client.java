@@ -2,7 +2,7 @@ package de.jonathan57157.food_mod_2;
 
 import de.jonathan57157.food_mod_2.block.ModBlocks;
 import de.jonathan57157.food_mod_2.block.entity.ModBlockEntities;
-import de.jonathan57157.food_mod_2.block.entity.renderer.CuttingBoardBlockEntityRenderer;
+import de.jonathan57157.food_mod_2.client.render.CuttingBoardBlockEntityRenderer;
 import de.jonathan57157.food_mod_2.screen.ModScreenHandlers;
 import de.jonathan57157.food_mod_2.screen.custom.IceCreamMakerScreen;
 import net.fabricmc.api.ClientModInitializer;
