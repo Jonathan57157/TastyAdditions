@@ -2,6 +2,7 @@ package de.jonathan57157.food_mod_2.block.entity.custom;
 
 import de.jonathan57157.food_mod_2.block.entity.ImplementedInventory;
 import de.jonathan57157.food_mod_2.block.entity.ModBlockEntities;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
@@ -23,15 +24,11 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
         super(ModBlockEntities.CUTTING_BOARD_BE, pos, state);
     }
 
-    /* ---------- INVENTORY ---------- */
+    /* ---------- Inventory ---------- */
 
     @Override
     public DefaultedList<ItemStack> getItems() {
         return inventory;
-    }
-
-    public boolean isEmpty() {
-        return inventory.get(0).isEmpty();
     }
 
     public ItemStack getStack() {
@@ -39,36 +36,35 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     }
 
     public void setStack(ItemStack stack) {
-        inventory.set(0, stack);
+        getItems().set(0, stack);
         markDirty();
-        if (world != null) {
-            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
-        }
+        sync();
     }
 
     public ItemStack removeStack() {
-        ItemStack result = inventory.get(0);
-        inventory.set(0, ItemStack.EMPTY);
+        ItemStack result = getItems().get(0);
+        getItems().set(0, ItemStack.EMPTY);
         markDirty();
-        if (world != null) {
-            world.updateListeners(pos, getCachedState(), getCachedState(), 3);
-        }
+        sync();
         return result;
     }
 
-    /* ---------- NBT / SYNC ---------- */
+
+    /* ---------- NBT ---------- */
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
-        super.writeNbt(nbt, lookup);
-        Inventories.writeNbt(nbt, inventory, lookup);
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.writeNbt(nbt, registryLookup);
+        Inventories.writeNbt(nbt, inventory, registryLookup);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
-        super.readNbt(nbt, lookup);
-        Inventories.readNbt(nbt, inventory, lookup);
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
+        super.readNbt(nbt, registryLookup);
+        Inventories.readNbt(nbt, inventory, registryLookup);
     }
+
+    /* ---------- Sync ---------- */
 
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
@@ -76,7 +72,14 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup lookup) {
-        return createNbt(lookup);
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
+        return createNbt(registryLookup);
     }
+
+    public void sync() {
+        if (world != null && !world.isClient) {
+            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+        }
+    }
+
 }
