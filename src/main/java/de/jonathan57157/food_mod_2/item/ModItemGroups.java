@@ -29,6 +29,7 @@ public class ModItemGroups {
                         entries.add(ModItems.CHEESE);
                         entries.add(ModItems.PUMPKIN_SOUP);
                         entries.add(ModItems.TOMATO);
+                        entries.add(ModItems.HALF_TOMATO);
                         entries.add(ModItems.TOMATO_SEEDS);
                         entries.add(ModItems.BLUEBERRY_SEEDS);
                         entries.add(ModItems.BLUEBERRY);
