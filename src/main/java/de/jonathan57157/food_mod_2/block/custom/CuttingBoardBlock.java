@@ -8,7 +8,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -132,7 +131,7 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
             // 👉 Beispiel-Rezept: Karotte → 2x Karotte
             if (input.isOf(ModItems.TOMATO)) {
                 board.removeStack();
-                player.giveItemStack(new ItemStack(ModItems.TOMATO_SLICE, 2));
+                player.giveItemStack(new ItemStack(ModItems.HALF_TOMATO, 2));
 
                 world.playSound(null, pos,
                         SoundEvents.BLOCK_WOOD_HIT,
