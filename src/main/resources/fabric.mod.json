@@ -3,9 +3,9 @@
 	"id": "food_mod_2",
 	"version": "${version}",
 	"name": "Food Mod 2",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Food Mod Alpha 0.1",
 	"authors": [
-		"Me!"
+		"Jonathan57157"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
