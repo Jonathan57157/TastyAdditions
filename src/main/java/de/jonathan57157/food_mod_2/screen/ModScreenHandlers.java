@@ -11,12 +11,20 @@ import net.minecraft.util.math.BlockPos;
 
 public class ModScreenHandlers {
 
-    public static final ScreenHandlerType<IceCreamMakerScreenHandler> ICE_CREAM_MAKER_SCREEN_HANDLER =
-            Registry.register(Registries.SCREEN_HANDLER, Identifier.of(FoodMod2.MOD_ID, "ice_cream_maker_screen_handler"),
-                    new ExtendedScreenHandlerType<>(IceCreamMakerScreenHandler::new, BlockPos.PACKET_CODEC));
-
+    public static ScreenHandlerType<IceCreamMakerScreenHandler>
+            ICE_CREAM_MAKER_SCREEN_HANDLER;
 
     public static void registerScreenHandlers() {
-        FoodMod2.LOGGER.info("Registering Screen Handlers for " + FoodMod2.MOD_ID);
+        ICE_CREAM_MAKER_SCREEN_HANDLER =
+                Registry.register(
+                        Registries.SCREEN_HANDLER,
+                        Identifier.of(FoodMod2.MOD_ID, "ice_cream_maker_screen_handler"),
+                        new ExtendedScreenHandlerType<>(
+                                IceCreamMakerScreenHandler::new,
+                                BlockPos.PACKET_CODEC
+                        )
+                );
+
+        FoodMod2.LOGGER.info("Registered Screen Handlers for " + FoodMod2.MOD_ID);
     }
 }

@@ -5,6 +5,7 @@ import de.jonathan57157.food_mod_2.block.entity.ModBlockEntities;
 import de.jonathan57157.food_mod_2.item.ModItemGroups;
 import de.jonathan57157.food_mod_2.item.ModItems;
 import de.jonathan57157.food_mod_2.recipe.ModRecipes;
+import de.jonathan57157.food_mod_2.screen.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
@@ -22,8 +23,9 @@ public class FoodMod2 implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
 		ModRecipes.registerRecipes();
+		ModScreenHandlers.registerScreenHandlers();
 
-        CompostingChanceRegistry.INSTANCE.add(ModItems.LETTUCE_SEEDS,0.25f);
+		CompostingChanceRegistry.INSTANCE.add(ModItems.LETTUCE_SEEDS,0.25f);
 	}
 }
 
