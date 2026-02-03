@@ -1,9 +1,9 @@
 {
   "itemgroup.food_mod_2.food_mod_items": "Food Mod",
 
-  "item.food_mod_2.ice_cream_1_2_3": "Ice Cream Cone",
-  "item.food_mod_2.ice_cream_1": "Ice Cream Cone",
-  "item.food_mod_2.ice_cream_2": "Ice Cream Cone",
+  "item.food_mod_2.blueberry_ice_cream": "Blueberry Ice Cream",
+  "item.food_mod_2.strawberry_ice_cream": "Strawberry Ice Cream",
+  "item.food_mod_2.apple_ice_cream": "Apple Ice Cream",
   "item.food_mod_2.ice_cream_wafer": "Ice Cream Wafer",
   "item.food_mod_2.scoop_of_strawberry_ice_cream": "Scoop of Strawberry Ice Cream",
   "item.food_mod_2.scoop_of_blueberry_ice_cream": "Scoop of Blueberry Ice Cream",
@@ -25,10 +25,5 @@
   "block.food_mod_2.lettuce_crop": "Lettuce Crop",
   "block.food_mod_2.cheese_block": "Cheese Block",
   "block.food_mod_2.ice_cream_maker": "Ice Cream Maker",
-  "block.food_mod_2.cutting_board": "Cutting Board",
-
-  "tooltip.food_mod_2.ice_cream_1_2_3.tooltip": "Blueberry, Strawberry and Apple",
-  "tooltip.food_mod_2.ice_cream_1.tooltip": "Blueberry",
-  "tooltip.food_mod_2.ice_cream_2.tooltip": "Strawberry",
-  "tooltip.food_mod_2.ice_cream_3.tooltip": "Apple"
+  "block.food_mod_2.cutting_board": "Cutting Board"
 }

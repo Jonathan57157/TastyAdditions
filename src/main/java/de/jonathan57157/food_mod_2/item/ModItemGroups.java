@@ -13,12 +13,12 @@ import net.minecraft.util.Identifier;
 public class ModItemGroups {
     public static final ItemGroup FOOD_MOD_ITEM_GROUP = Registry.register(Registries.ITEM_GROUP,
             Identifier.of(FoodMod2.MOD_ID, "food_mod_items"),
-            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.ICE_CREAM_1_2_3))
+            FabricItemGroup.builder().icon(() -> new ItemStack(ModItems.BLUEBERRY))
                     .displayName(Text.translatable("itemgroup.food_mod_2.food_mod_items"))
                     .entries((displayContext, entries) -> {
-                        entries.add(ModItems.ICE_CREAM_1_2_3);
-                        entries.add(ModItems.ICE_CREAM_1);
-                        entries.add(ModItems.ICE_CREAM_2);
+                        entries.add(ModItems.BLUEBERRY_ICE_CREAM);
+                        entries.add(ModItems.STRAWBERRY_ICE_CREAM);
+                        entries.add(ModItems.APPLE_ICE_CREAM);
                         entries.add(ModItems.ICE_CREAM_WAFER);
                         entries.add(ModItems.SCOOP_OF_STRAWBERRY_ICE_CREAM);
                         entries.add(ModItems.SCOOP_OF_BLUEBERRY_ICE_CREAM);
@@ -30,7 +30,6 @@ public class ModItemGroups {
                         entries.add(ModItems.PUMPKIN_SOUP);
                         entries.add(ModItems.TOMATO);
                         entries.add(ModItems.HALF_TOMATO);
-                        entries.add(ModItems.QUARTERED_TOMATO);
                         entries.add(ModItems.TOMATO_SEEDS);
                         entries.add(ModItems.BLUEBERRY_SEEDS);
                         entries.add(ModItems.BLUEBERRY);
