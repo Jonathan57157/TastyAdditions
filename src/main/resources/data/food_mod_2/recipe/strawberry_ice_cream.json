@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "food_mod_2:ice_cream_wafer"
+    },
+    {
+      "item": "food_mod_2:scoop_of_strawberry_ice_cream"
+    }
+  ],
+  "result": {
+    "id": "food_mod_2:strawberry_ice_cream",
+    "count": 1
+  }
+}
