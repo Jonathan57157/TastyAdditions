@@ -1,7 +1,6 @@
 package de.jonathan57157.food_mod_2.client.render;
 
 import de.jonathan57157.food_mod_2.block.entity.custom.CuttingBoardBlockEntity;
-import net.minecraft.block.Block;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -26,10 +25,8 @@ public class CuttingBoardBlockEntityRenderer
             int overlay
     ) {
 
-        // 🔴 EINZIGE Quelle
         ItemStack stack = entity.getItems().get(0);
 
-        // 🔴 ABSOLUT KRITISCH
         if (stack.isEmpty()) {
             return;
         }
