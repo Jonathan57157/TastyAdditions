@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "food_mod_2",
+	"id": "tasty_additions",
 	"version": "${version}",
-	"name": "Food Mod 2",
-	"description": "Food Mod Alpha 0.1",
+	"name": "Tasty Additions",
+	"description": "Tasty Additions gives Minecraft's food a boost with new stuff to cook, meals to make, and ways to process it all.",
 	"authors": [
 		"Jonathan57157"
 	],
