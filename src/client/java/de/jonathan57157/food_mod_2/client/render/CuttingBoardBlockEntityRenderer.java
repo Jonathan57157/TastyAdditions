@@ -30,14 +30,14 @@ public class CuttingBoardBlockEntityRenderer
     ) {
 
         ItemStack stack = entity.getStack();
-
-        if (stack.isEmpty()) {
-            return;
-        }
+        if (stack.isEmpty()) return;
 
         matrices.push();
 
         matrices.translate(0.5, 0.08, 0.5);
+
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(90));
+
         matrices.scale(0.5f, 0.5f, 0.5f);
 
         MinecraftClient.getInstance()
@@ -54,8 +54,5 @@ public class CuttingBoardBlockEntityRenderer
                 );
 
         matrices.pop();
-
-        System.out.println("Stack empty? " + stack.isEmpty());
-
     }
 }
