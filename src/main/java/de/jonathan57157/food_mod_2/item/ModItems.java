@@ -25,8 +25,7 @@ public class ModItems {
     public static final Item TOMATO = registerItem("tomato", new Item(new Item.Settings().food(ModFoodComponents.TOMATO)));
     public static final Item HALF_TOMATO = registerItem("half_tomato", new Item(new Item.Settings().food(ModFoodComponents.HALF_TOMATO)));
     public static final Item TOMATO_SEEDS = registerItem("tomato_seeds", new AliasedBlockItem(ModBlocks.TOMATO_CROP, new Item.Settings()));
-    public static final Item BLUEBERRY = registerItem("blueberry", new Item(new Item.Settings().food(ModFoodComponents.BLUEBERRIES)));
-    public static final Item BLUEBERRY_SEEDS = registerItem("blueberry_seeds", new AliasedBlockItem(ModBlocks.BLUEBERRY_BUSH, new Item.Settings()));
+    public static final Item BLUEBERRY = registerItem("blueberry", new AliasedBlockItem(ModBlocks.BLUEBERRY_BUSH, new Item.Settings().food(ModFoodComponents.BLUEBERRIES)));
     public static final Item STRAWBERRY = registerItem("strawberry", new Item(new Item.Settings().food(ModFoodComponents.STRAWBERRY)));
     public static final Item KNIFE = registerItem("knife", new SwordItem(ToolMaterials.IRON, new Item.Settings()));
 

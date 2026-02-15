@@ -119,7 +119,6 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
                     SoundEvents.ENTITY_ITEM_PICKUP,
                     SoundCategory.BLOCKS, 1f, 1.5f);
 
-            board.markDirty();
             return ItemActionResult.SUCCESS;
         }
 
@@ -138,7 +137,6 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
                         SoundCategory.BLOCKS, 1f, 1f);
             }
 
-            board.markDirty();
             return ItemActionResult.SUCCESS;
         }
 
@@ -151,7 +149,6 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
                     SoundEvents.ENTITY_ITEM_PICKUP,
                     SoundCategory.BLOCKS, 1f, 1f);
 
-            board.markDirty();
             return ItemActionResult.SUCCESS;
         }
 

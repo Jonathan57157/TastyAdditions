@@ -36,16 +36,14 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     }
 
     public void setStack(ItemStack stack) {
-        getItems().set(0, stack);
+        inventory.set(0, stack);
         markDirty();
-        sync();
     }
 
     public ItemStack removeStack() {
-        ItemStack result = getItems().get(0);
-        getItems().set(0, ItemStack.EMPTY);
+        ItemStack result = inventory.get(0);
+        inventory.set(0, ItemStack.EMPTY);
         markDirty();
-        sync();
         return result;
     }
 
@@ -61,8 +59,12 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
     @Override
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         super.readNbt(nbt, registryLookup);
+
+        inventory.clear();
+
         Inventories.readNbt(nbt, inventory, registryLookup);
     }
+
 
     /* ---------- Sync ---------- */
 
@@ -76,9 +78,12 @@ public class CuttingBoardBlockEntity extends BlockEntity implements ImplementedI
         return createNbt(registryLookup);
     }
 
-    public void sync() {
+    @Override
+    public void markDirty() {
+        super.markDirty();
+
         if (world != null && !world.isClient) {
-            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_LISTENERS);
         }
     }
 

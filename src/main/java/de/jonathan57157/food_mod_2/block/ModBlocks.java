@@ -18,7 +18,7 @@ public class ModBlocks {
     public static final Block ICE_CREAM_MAKER = registerBlock("ice_cream_maker", new IceCreamMakerBlock(AbstractBlock.Settings.create().nonOpaque()));
     public static final Block CHEESE_BLOCK = registerBlock("cheese_block", new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.MUD)));
     public static final Block BURGER_BLOCK = registerBlockWithoutBlockItem("burger_block", new BurgerBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.STEM).nonOpaque()));
-    public static final Block BLUEBERRY_BUSH = registerBlockWithoutBlockItem("blueberry_bush", new BlueberryBushBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.SWEET_BERRY_BUSH)));
+    public static final Block BLUEBERRY_BUSH = registerBlock("blueberry_bush", new BlueberryBushBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.SWEET_BERRY_BUSH)));
 
     public static final Block LETTUCE_CROP = registerBlockWithoutBlockItem("lettuce_crop",
             new LettuceCropBlock(AbstractBlock.Settings.create().noCollision()

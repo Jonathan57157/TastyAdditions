@@ -8,6 +8,10 @@ import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.RotationAxis;
+import net.minecraft.util.math.Direction;
+import de.jonathan57157.food_mod_2.block.custom.CuttingBoardBlock;
+
 
 public class CuttingBoardBlockEntityRenderer
         implements BlockEntityRenderer<CuttingBoardBlockEntity> {
@@ -25,7 +29,7 @@ public class CuttingBoardBlockEntityRenderer
             int overlay
     ) {
 
-        ItemStack stack = entity.getItems().get(0);
+        ItemStack stack = entity.getStack();
 
         if (stack.isEmpty()) {
             return;
@@ -50,5 +54,8 @@ public class CuttingBoardBlockEntityRenderer
                 );
 
         matrices.pop();
+
+        System.out.println("Stack empty? " + stack.isEmpty());
+
     }
 }
