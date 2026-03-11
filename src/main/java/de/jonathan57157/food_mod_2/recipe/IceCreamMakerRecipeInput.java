@@ -15,7 +15,8 @@ public record IceCreamMakerRecipeInput(ItemStack input1, ItemStack input2) imple
     }
 
     @Override
-    public int getSize() {
+    public int size() {
         return 2;
     }
+
 }

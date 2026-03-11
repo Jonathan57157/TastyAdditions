@@ -13,25 +13,18 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
-import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemActionResult;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import static net.minecraft.state.property.Properties.FACING;
 
 public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityProvider {
 
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final MapCodec<IceCreamMakerBlock> CODEC = IceCreamMakerBlock.createCodec(IceCreamMakerBlock::new);
 
     private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(0.0, 0.0, 3.0, 16.0, 8.0, 13.0);
@@ -107,8 +100,8 @@ public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityPr
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
-                                             PlayerEntity player, Hand hand, BlockHitResult hit) {
+    protected ActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
+                                         PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient) {
             NamedScreenHandlerFactory screenHandlerFactory =
                     (NamedScreenHandlerFactory) world.getBlockEntity(pos);
@@ -117,7 +110,7 @@ public class IceCreamMakerBlock extends BlockWithEntity implements BlockEntityPr
                 player.openHandledScreen(screenHandlerFactory);
             }
         }
-        return ItemActionResult.SUCCESS;
+        return ActionResult.SUCCESS;
     }
 
     @Nullable

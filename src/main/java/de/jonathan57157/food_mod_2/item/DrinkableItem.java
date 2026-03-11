@@ -14,7 +14,7 @@ public class DrinkableItem extends PotionItem {
         super(settings);
     }
 
-    @Override
+   /* @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         PlayerEntity playerEntity = user instanceof PlayerEntity ? (PlayerEntity) user : null;
         if (playerEntity instanceof ServerPlayerEntity) {
@@ -33,5 +33,5 @@ public class DrinkableItem extends PotionItem {
         }
         return new ItemStack(Items.GLASS_BOTTLE);
     }
-
+*/
 }
