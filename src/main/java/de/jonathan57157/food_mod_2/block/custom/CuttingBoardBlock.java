@@ -11,6 +11,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -20,11 +22,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.function.Function;
-
-import static net.minecraft.state.property.Properties.FACING;
-
-public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityProvider, Function<AbstractBlock.Settings, Block> {
+public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityProvider {
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final MapCodec<CuttingBoardBlock> CODEC = CuttingBoardBlock.createCodec(CuttingBoardBlock::new);
 
     private static final VoxelShape SHAPE_NORTH = Block.createCuboidShape(1, 0, 3, 14, 1, 13);
@@ -97,15 +96,15 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
     }
 
     @Override
-    protected ActionResult onUseWithItem(ItemStack stack, BlockState state,
-                                         World world, BlockPos pos,
-                                         PlayerEntity player, Hand hand,
-                                         BlockHitResult hit) {
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state,
+                                             World world, BlockPos pos,
+                                             PlayerEntity player, Hand hand,
+                                             BlockHitResult hit) {
 
-        if (world.isClient) return ActionResult.SUCCESS;
+        if (world.isClient) return ItemActionResult.SUCCESS;
 
         if (!(world.getBlockEntity(pos) instanceof CuttingBoardBlockEntity board))
-            return ActionResult.SUCCESS;
+            return ItemActionResult.SUCCESS;
 
         ItemStack held = player.getStackInHand(hand);
 
@@ -120,7 +119,7 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
                     SoundEvents.ENTITY_ITEM_PICKUP,
                     SoundCategory.BLOCKS, 1f, 1.5f);
 
-            return ActionResult.SUCCESS;
+            return ItemActionResult.SUCCESS;
         }
 
         /* 🔪 SCHNEIDEN */
@@ -138,7 +137,7 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
                         SoundCategory.BLOCKS, 1f, 1f);
             }
 
-            return ActionResult.SUCCESS;
+            return ItemActionResult.SUCCESS;
         }
 
         /* ↩ ITEM ZURÜCKNEHMEN */
@@ -150,14 +149,11 @@ public class CuttingBoardBlock extends BlockWithEntity implements BlockEntityPro
                     SoundEvents.ENTITY_ITEM_PICKUP,
                     SoundCategory.BLOCKS, 1f, 1f);
 
-            return ActionResult.SUCCESS;
+            return ItemActionResult.SUCCESS;
         }
 
-        return ActionResult.SUCCESS;
+        return ItemActionResult.SUCCESS;
     }
 
-    @Override
-    public Block apply(Settings settings) {
-        return null;
-    }
+
 }

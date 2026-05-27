@@ -57,7 +57,7 @@ public class BlueberryBushBlock extends SweetBerryBushBlock {
             BlockState blockState = state.with(AGE, Integer.valueOf(1));
             world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
             world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
-            return ActionResult.SUCCESS;
+            return ActionResult.success(world.isClient);
         } else {
             return super.onUse(state, world, pos, player, hit);
         }
@@ -66,6 +66,11 @@ public class BlueberryBushBlock extends SweetBerryBushBlock {
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
         return VoxelShapes.empty();
+    }
+
+    @Override
+    public boolean isTransparent(BlockState state, BlockView world, BlockPos pos) {
+        return true;
     }
 
     @Override

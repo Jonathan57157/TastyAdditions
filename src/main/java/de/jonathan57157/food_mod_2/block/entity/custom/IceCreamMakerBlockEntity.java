@@ -22,7 +22,6 @@ import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
@@ -158,7 +157,7 @@ public class IceCreamMakerBlockEntity extends BlockEntity implements Implemented
 
 
     private Optional<RecipeEntry<IceCreamMakerRecipe>> getCurrentRecipe() {
-        return ((ServerWorld) this.world).getRecipeManager()
+        return this.world.getRecipeManager()
                 .getFirstMatch(ModRecipes.ICE_CREAM_MAKER_TYPE,
                         new IceCreamMakerRecipeInput(
                                 inventory.get(0),  // blueberries
