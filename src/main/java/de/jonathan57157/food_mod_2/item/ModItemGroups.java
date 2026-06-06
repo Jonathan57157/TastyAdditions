@@ -19,10 +19,12 @@ public class ModItemGroups {
                         entries.add(ModItems.BLUEBERRY_ICE_CREAM);
                         entries.add(ModItems.STRAWBERRY_ICE_CREAM);
                         entries.add(ModItems.APPLE_ICE_CREAM);
+                        entries.add(ModItems.CHOCOLATE_ICE_CREAM);
                         entries.add(ModItems.ICE_CREAM_WAFER);
                         entries.add(ModItems.SCOOP_OF_STRAWBERRY_ICE_CREAM);
                         entries.add(ModItems.SCOOP_OF_BLUEBERRY_ICE_CREAM);
                         entries.add(ModItems.SCOOP_OF_APPLE_ICE_CREAM);
+                        entries.add(ModItems.SCOOP_OF_CHOCOLATE_ICE_CREAM);
                         entries.add(ModItems.BURGER);
                         entries.add(ModItems.LETTUCE);
                         entries.add(ModItems.LETTUCE_SEEDS);

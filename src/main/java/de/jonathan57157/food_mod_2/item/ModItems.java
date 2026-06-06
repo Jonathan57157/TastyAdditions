@@ -12,10 +12,12 @@ public class ModItems {
     public static final Item BLUEBERRY_ICE_CREAM = registerItem("blueberry_ice_cream", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM).maxCount(1)));
     public static final Item STRAWBERRY_ICE_CREAM = registerItem("strawberry_ice_cream", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM).maxCount(1)));
     public static final Item APPLE_ICE_CREAM = registerItem("apple_ice_cream", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM).maxCount(1)));
-    public static final Item ICE_CREAM_WAFER = registerItem("ice_cream_wafer", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_WAFER).maxCount(16)));
+    public static final Item CHOCOLATE_ICE_CREAM = registerItem("chocolate_ice_cream", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM).maxCount(1)));
+    public static final Item ICE_CREAM_WAFER = registerItem("ice_cream_wafer", new Item(new Item.Settings().food(ModFoodComponents.ICE_CREAM_WAFER).maxCount(64)));
     public static final Item SCOOP_OF_STRAWBERRY_ICE_CREAM = registerItem("scoop_of_strawberry_ice_cream", new Item(new Item.Settings()));
     public static final Item SCOOP_OF_BLUEBERRY_ICE_CREAM = registerItem("scoop_of_blueberry_ice_cream", new Item(new Item.Settings()));
     public static final Item SCOOP_OF_APPLE_ICE_CREAM = registerItem("scoop_of_apple_ice_cream", new Item(new Item.Settings()));
+    public static final Item SCOOP_OF_CHOCOLATE_ICE_CREAM = registerItem("scoop_of_chocolate_ice_cream", new Item(new Item.Settings()));
     public static final Item BURGER = registerItem("burger", new AliasedBlockItem(ModBlocks.BURGER_BLOCK, new Item.Settings().food(ModFoodComponents.BURGER)));
     public static final Item LETTUCE_SEEDS = registerItem("lettuce_seeds", new AliasedBlockItem(ModBlocks.LETTUCE_CROP, new Item.Settings()));
     public static final Item LETTUCE = registerItem("lettuce", new Item(new Item.Settings().food(ModFoodComponents.LETTUCE)));

@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    public static final Block ICE_CREAM_MAKER = registerBlock("ice_cream_maker", new IceCreamMakerBlock(AbstractBlock.Settings.create().nonOpaque()));
+    public static final Block ICE_CREAM_MAKER = registerBlock("ice_cream_maker", new IceCreamMakerBlock(AbstractBlock.Settings.create().nonOpaque().sounds(BlockSoundGroup.COPPER)));
     public static final Block CHEESE_BLOCK = registerBlock("cheese_block", new Block(AbstractBlock.Settings.create().sounds(BlockSoundGroup.MUD)));
     public static final Block BURGER_BLOCK = registerBlockWithoutBlockItem("burger_block", new BurgerBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.STEM).nonOpaque()));
     public static final Block BLUEBERRY_BUSH = registerBlock("blueberry_bush", new BlueberryBushBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.SWEET_BERRY_BUSH)));
@@ -26,7 +26,7 @@ public class ModBlocks {
     public static final Block TOMATO_CROP = registerBlockWithoutBlockItem("tomato_crop",
             new TomatoCropBlock(AbstractBlock.Settings.create().noCollision()
                     .ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(MapColor.RED)));
-    public static final Block CUTTING_BOARD = registerBlock("cutting_board", new CuttingBoardBlock(AbstractBlock.Settings.create()));
+    public static final Block CUTTING_BOARD = registerBlock("cutting_board", new CuttingBoardBlock(AbstractBlock.Settings.create().sounds(BlockSoundGroup.WOOD)));
 
     //Hello
     private static Block registerBlock(String name, Block block) {
