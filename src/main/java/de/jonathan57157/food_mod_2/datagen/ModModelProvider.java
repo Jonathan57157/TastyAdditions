@@ -26,8 +26,22 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.BLUEBERRY, Models.GENERATED);
         itemModelGenerator.register(ModItems.KNIFE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.APPLE_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BLUEBERRY_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHEESE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHOCOLATE_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HALF_TOMATO, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ICE_CREAM_WAFER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LETTUCE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PUMPKIN_SOUP, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SCOOP_OF_APPLE_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SCOOP_OF_BLUEBERRY_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SCOOP_OF_CHOCOLATE_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SCOOP_OF_STRAWBERRY_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRAWBERRY, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STRAWBERRY_ICE_CREAM, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TOMATO, Models.GENERATED);
     }
 
 }
