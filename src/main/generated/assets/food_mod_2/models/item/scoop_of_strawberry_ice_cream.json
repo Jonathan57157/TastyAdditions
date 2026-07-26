@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "food_mod_2:item/scoop_of_strawberry_ice_cream"
+  }
+}
